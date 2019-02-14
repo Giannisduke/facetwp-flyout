@@ -19,13 +19,13 @@ FWP.flyout.close(); // close it
 ### JS hooks
 
 ```js
-// Modify the facet output and/or label
+// Modify the facet output + label
 FWP.hooks.addFilter('facetwp/flyout/facet_html', function(content, params) {
     // available: params.facet_name, params.facet_label, params.facet_html
     return content;
 });
 
-// Modify the flyout container HTML (see assets/js/front.js for the default HTML)
+// Modify the container HTML (see assets/js/front.js for the default HTML)
 FWP.hooks.addFilter('facetwp/flyout/flyout_html', function(flyout) {
     return flyout;
 });
