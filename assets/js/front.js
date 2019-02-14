@@ -12,6 +12,13 @@
         },
         init: function() {
             var content = '';
+            var facet_html = `
+            <div class="facetwp-flyout-facet">
+                <h3>{label}</h3>
+                {facet}
+            </div>
+            `;
+
             FWP.flyout.get_eligible_facets().each(function() {
                 var $this = $(this);
                 var facet_name = $this.attr('data-name');
@@ -22,16 +29,13 @@
                 // Remove the facet classes
                 outerHtml.attr('class', 'facetwp-ignore');
 
-                // Then grab the HTML string
-                content += '<h3>' + FWP.settings.labels[facet_name] + '</h3>';
-                content += outerHtml[0].outerHTML;
-
-                // Support for custom facet HTML
-                content = FWP.hooks.applyFilters('facetwp/flyout/facet_html', content, {
-                    facet_name: facet_name,
-                    facet_label: FWP.settings.labels[facet_name],
-                    facet_html: outerHtml[0].outerHTML
+                // Support for custom HTML
+                var temp = FWP.hooks.applyFilters('facetwp/flyout/facet_html', facet_html, {
+                    facet_name: facet_name
                 });
+                temp = temp.replace('{label}', FWP.settings.labels[facet_name]);
+                temp = temp.replace('{facet}', outerHtml[0].outerHTML);
+                content += temp;
             });
 
             var flyout = `
