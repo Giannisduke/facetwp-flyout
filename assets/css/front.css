@@ -1,0 +1,23 @@
+.facetwp-flyout {
+    position: fixed;
+    width: 400px;
+    top: 0;
+    height: 100%;
+    background: #fff;
+    border-right: 1px solid #eee;
+    transition: all 400ms ease-in-out;
+    transform: translateX(-100%);
+}
+
+.facetwp-flyout.active {
+    transform: translateX(0);
+}
+
+.facetwp-flyout-wrap {
+    padding: 40px 10px 10px 10px;
+}
+
+.facetwp-flyout-close {
+    text-align: right;
+    cursor: pointer;
+}
