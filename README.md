@@ -19,6 +19,11 @@ FWP.flyout.close(); // close it
 ### JS hooks
 
 ```js
+// Change the order of the facets within the flyout
+FWP.hooks.addFilter('facetwp/flyout/facets', function(facets) {
+    return ['facet2', 'facet3', 'facet4', 'facet1'];
+});
+
 // Modify the facet wrapper HTML
 FWP.hooks.addFilter('facetwp/flyout/facet_html', function(content) {
     return content;
