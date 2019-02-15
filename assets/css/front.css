@@ -1,9 +1,9 @@
 .facetwp-flyout {
     position: fixed;
     width: 360px;
+    max-width: 100%;
     top: 0;
     height: 100%;
-    overflow: scroll;
     background: #fff;
     border-right: 1px solid #eee;
     transition: all 400ms ease-in-out;
@@ -14,15 +14,39 @@
     transform: translateX(0);
 }
 
-.facetwp-flyout-wrap {
+.facetwp-flyout-close,
+.facetwp-flyout-content {
     padding: 10px;
 }
 
-body.admin-bar .facetwp-flyout-wrap {
-    padding-top: 40px;
+.facetwp-flyout-content {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 40px); /* flyout-close = 40px */
+    overflow: auto;
+    padding-top: 0;
 }
 
 .facetwp-flyout-close {
     text-align: right;
+    line-height: 20px;
     cursor: pointer;
+}
+
+body.admin-bar .facetwp-flyout-wrap {
+    padding-top: 30px;
+}
+
+body.admin-bar .facetwp-flyout-content {
+    height: calc(100% - 70px); /* flyout-close + admin-bar = 70px */
+}
+
+@media (max-width: 782px) {
+    body.admin-bar .facetwp-flyout-wrap {
+        padding-top: 46px;
+    }
+
+    body.admin-bar .facetwp-flyout-content {
+        height: calc(100% - 86px);
+    }
 }
