@@ -7,34 +7,32 @@
         close: function() {
             FWP.flyout.swap_facets('close');
         },
-        get_eligible_facets: function() {
-            return $('.facetwp-facet[data-type!="map"]');
+        get_ordered_facets: function() {
+            var facets = [];
+
+            $('.facetwp-facet[data-type!="map"]').each(function() {
+                facets.push($(this).attr('data-name'));
+            });
+
+            return FWP.hooks.applyFilters('facetwp/flyout/facets', facets);
         },
         init: function() {
             var content = '';
             var facet_html = `
             <div class="facetwp-flyout-facet">
                 <h3>{label}</h3>
-                {facet}
+                <div class="flyout-facet-{name}"></div>
             </div>
             `;
 
-            FWP.flyout.get_eligible_facets().each(function() {
-                var $this = $(this);
-                var facet_name = $this.attr('data-name');
-
-                // Get the wrapper element and empty its contents
-                var outerHtml = $($this[0].outerHTML).html('');
-
-                // Remove the facet classes
-                outerHtml.attr('class', 'facetwp-ignore');
+            $.each(FWP.flyout.get_ordered_facets(), function(index, facet_name) {
 
                 // Support for custom HTML
                 var temp = FWP.hooks.applyFilters('facetwp/flyout/facet_html', facet_html, {
                     facet_name: facet_name
                 });
                 temp = temp.replace('{label}', FWP.settings.labels[facet_name]);
-                temp = temp.replace('{facet}', outerHtml[0].outerHTML);
+                temp = temp.replace('{name}', facet_name);
                 content += temp;
             });
 
@@ -63,18 +61,17 @@
             }
 
             // Loop through each facet
-            FWP.flyout.get_eligible_facets().each(function() {
-                var $this = $(this);
-                var facet_name = $this.attr('data-name');
-                var css_classes = $this.attr('class');
+            $.each(FWP.flyout.get_ordered_facets(), function(index, facet_name) {
+                var $this = $('.facetwp-facet-' + facet_name);
 
-                // Copy HTML from the "facetwp-facet" to "facetwp-ignore" element
-                var $ignored = $('.facetwp-ignore[data-name="' + facet_name + '"]');
-                $ignored.html($this.html());
-
-                // Swap CSS classes and empty the newly-ignored facet
-                $ignored.attr('class', css_classes);
-                $this.attr('class', 'facetwp-ignore').html('');
+                if ('open' == action) {
+                    $this.wrap('<div class="placeholder-' + facet_name + '"></div>');
+                    $this.detach().appendTo('.flyout-facet-' + facet_name);
+                }
+                else {
+                    $this.detach().appendTo('.placeholder-' + facet_name);
+                    $this.unwrap();
+                }
             });
 
             // Add the open or close CSS class

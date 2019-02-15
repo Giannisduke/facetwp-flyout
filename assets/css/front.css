@@ -1,8 +1,9 @@
 .facetwp-flyout {
     position: fixed;
-    width: 400px;
+    width: 360px;
     top: 0;
     height: 100%;
+    overflow: scroll;
     background: #fff;
     border-right: 1px solid #eee;
     transition: all 400ms ease-in-out;
@@ -14,7 +15,11 @@
 }
 
 .facetwp-flyout-wrap {
-    padding: 40px 10px 10px 10px;
+    padding: 10px;
+}
+
+body.admin-bar .facetwp-flyout-wrap {
+    padding-top: 40px;
 }
 
 .facetwp-flyout-close {
