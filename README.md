@@ -6,7 +6,7 @@ This plugin generates a flyout sidebar which can help with mobile support.
 2. Add a new button to trigger the flyout, or trigger it programmatically (see below)
 
 ```html
-<button onclick="FWP.flyout.open()">Filter</button>
+<button class="facetwp-flyout-open">Filter</button>
 ```
 
 ### JS functions

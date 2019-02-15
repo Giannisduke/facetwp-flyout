@@ -86,6 +86,10 @@
         FWP.flyout.init();
     });
 
+    $(document).on('click', '.facetwp-flyout-open', function() {
+        FWP.flyout.open();
+    });
+
     $(document).on('click', '.facetwp-flyout-close', function() {
         FWP.flyout.close();
     });
