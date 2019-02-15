@@ -44,3 +44,25 @@ FWP.hooks.addAction('facetwp/flyout/close', function() {
     // do something
 });
 ```
+
+### HTML defaults
+
+The flyout wrapper HTML (modify via the `facetwp/flyout/flyout_html` JS hook):
+
+```html
+<div class="facetwp-flyout">
+    <div class="facetwp-flyout-wrap">
+        <div class="facetwp-flyout-close">x</div>
+        <div class="facetwp-flyout-content">{content}</div>
+    </div>
+</div>
+```
+
+The HTML for each facet (modify via the `facetwp/flyout/facet_html` JS hook):
+
+```html
+<div class="facetwp-flyout-facet">
+    <h3>{label}</h3>
+    <div class="flyout-facet-{name}"></div>
+</div>
+```
