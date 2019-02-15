@@ -21,27 +21,31 @@ FWP.flyout.close(); // close it
 ```js
 (function($) {
 
-    // Change the order of the facets within the flyout
+    /* change the facet display order */
     FWP.hooks.addFilter('facetwp/flyout/facets', function(facets) {
         return ['facet3', 'facet1', 'facet2'];
     });
 
-    // Modify the facet wrapper HTML
+
+    /* modify each facet's wrapper HTML */
     FWP.hooks.addFilter('facetwp/flyout/facet_html', function(facet_html) {
         return facet_html;
     });
 
-    // Modify the flyout wrapper HTML
+
+    /* modify the flyout wrapper HTML */
     FWP.hooks.addFilter('facetwp/flyout/flyout_html', function(flyout_html) {
         return flyout_html;
     });
 
-    // Flyout opened
+
+    //* flyout opened */
     FWP.hooks.addAction('facetwp/flyout/open', function() {
         // do something
     });
 
-    // Flyout closed
+
+    /* flyout closed */
     FWP.hooks.addAction('facetwp/flyout/close', function() {
         // do something
     });
