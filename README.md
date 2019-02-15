@@ -19,30 +19,34 @@ FWP.flyout.close(); // close it
 ### JS hooks
 
 ```js
-// Change the order of the facets within the flyout
-FWP.hooks.addFilter('facetwp/flyout/facets', function(facets) {
-    return ['facet2', 'facet3', 'facet4', 'facet1'];
-});
+(function($) {
 
-// Modify the facet wrapper HTML
-FWP.hooks.addFilter('facetwp/flyout/facet_html', function(content) {
-    return content;
-});
+    // Change the order of the facets within the flyout
+    FWP.hooks.addFilter('facetwp/flyout/facets', function(facets) {
+        return ['facet2', 'facet3', 'facet4', 'facet1'];
+    });
 
-// Modify the flyout wrapper HTML
-FWP.hooks.addFilter('facetwp/flyout/flyout_html', function(flyout) {
-    return flyout;
-});
+    // Modify the facet wrapper HTML
+    FWP.hooks.addFilter('facetwp/flyout/facet_html', function(facet_html) {
+        return facet_html;
+    });
 
-// Flyout opened
-FWP.hooks.addAction('facetwp/flyout/open', function() {
-    // do something
-});
+    // Modify the flyout wrapper HTML
+    FWP.hooks.addFilter('facetwp/flyout/flyout_html', function(flyout_html) {
+        return flyout_html;
+    });
 
-// Flyout closed
-FWP.hooks.addAction('facetwp/flyout/close', function() {
-    // do something
-});
+    // Flyout opened
+    FWP.hooks.addAction('facetwp/flyout/open', function() {
+        // do something
+    });
+
+    // Flyout closed
+    FWP.hooks.addAction('facetwp/flyout/close', function() {
+        // do something
+    });
+
+})(jQuery);
 ```
 
 ### HTML defaults
