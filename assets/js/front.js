@@ -38,8 +38,8 @@
 
             var flyout = `
             <div class="facetwp-flyout">
+                <div class="facetwp-flyout-close">x</div>
                 <div class="facetwp-flyout-wrap">
-                    <div class="facetwp-flyout-close">x</div>
                     <div class="facetwp-flyout-content">{content}</div>
                 </div>
             </div>
