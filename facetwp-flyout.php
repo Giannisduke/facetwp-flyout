@@ -2,7 +2,7 @@
 /*
 Plugin Name: FacetWP - Flyout menu
 Description: Displays a flyout facet menu
-Version: 0.2
+Version: 0.2.1
 Author: FacetWP, LLC
 Author URI: https://facetwp.com/
 GitHub URI: facetwp/facetwp-flyout
