@@ -43,6 +43,7 @@
                     <div class="facetwp-flyout-content">{content}</div>
                 </div>
             </div>
+            <div class="facetwp-flyout-fog"></div>
             `;
 
             // Support for custom flyout HTML
@@ -50,6 +51,7 @@
             flyout = flyout.replace('{content}', content);
 
             $('.facetwp-flyout').remove();
+            $('.facetwp-flyout-fog').remove();
             $('body').append(flyout);
         },
         swap_facets: function(action) {
@@ -76,6 +78,7 @@
 
             // Add the open or close CSS class
             $('.facetwp-flyout').toggleClass('active');
+            $('.facetwp-flyout-fog').toggleClass('active');
 
             // Custom action
             FWP.hooks.doAction('facetwp/flyout/' + action);
@@ -90,7 +93,7 @@
         FWP.flyout.open();
     });
 
-    $(document).on('click', '.facetwp-flyout-close', function() {
+    $(document).on('click', '.facetwp-flyout-close, .facetwp-flyout-fog', function() {
         FWP.flyout.close();
     });
 })(jQuery);

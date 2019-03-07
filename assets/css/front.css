@@ -1,6 +1,6 @@
 .facetwp-flyout {
     position: fixed;
-    width: 360px;
+    width: 300px;
     max-width: 100%;
     top: 0;
     height: 100%;
@@ -39,6 +39,21 @@ body.admin-bar .facetwp-flyout {
 
 body.admin-bar .facetwp-flyout-wrap {
     height: calc(100% - 72px); /* flyout-close (40px) + admin-bar (32px) */
+}
+
+.facetwp-flyout-fog {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    background-color: #000;
+    opacity: 0.5;
+}
+
+.facetwp-flyout-fog.active {
+    display: block;
 }
 
 @media (max-width: 782px) {
